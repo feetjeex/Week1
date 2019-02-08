@@ -11,25 +11,85 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = "MainActivity";
 
+    // Declaring the variables that contain the actual images of body parts
+    ImageView imagemouth;
+    ImageView imagehat;
+    ImageView imageeyes;
+    ImageView imagemoustache;
+    ImageView imageglasses;
+    ImageView imageeyebrows;
+    ImageView imageshoes;
+    ImageView imagearms;
+    ImageView imageears;
+    ImageView imagenose;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
+        // call the super class onCreate to complete the creation of activity like
+        // the view hierarchy
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // initialize members of body parts so we can manipulate them later
+        imagemouth = (ImageView) findViewById(R.id.ImageMouth);
+        imagehat = (ImageView) findViewById(R.id.ImageHat);
+        imageeyes = (ImageView) findViewById(R.id.ImageEyes);
+        imagemoustache = (ImageView) findViewById(R.id.ImageMoustache);
+        imageglasses = (ImageView) findViewById(R.id.ImageGlasses);
+        imageeyebrows = (ImageView) findViewById(R.id.ImageEyebrows);
+        imageshoes = (ImageView) findViewById(R.id.ImageShoes);
+        imagearms = (ImageView) findViewById(R.id.ImageArms);
+        imageears = (ImageView) findViewById(R.id.ImageEars);
+        imagenose = (ImageView) findViewById(R.id.ImageNose);
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
 
+        // Saves the state of the image (Visible/Invisible) to the image as a keypair
+        super.onSaveInstanceState(outState);
+        outState.putInt("ImageMouth", imagemouth.getVisibility());
+        outState.putInt("ImageHat", imagehat.getVisibility());
+        outState.putInt("ImageEyes", imageeyes.getVisibility());
+        outState.putInt("ImageMoustache", imagemoustache.getVisibility());
+        outState.putInt("ImageGlasses", imageglasses.getVisibility());
+        outState.putInt("ImageEyebrows", imageeyebrows.getVisibility());
+        outState.putInt("ImageShoes", imageshoes.getVisibility());
+        outState.putInt("ImageArms", imagearms.getVisibility());
+        outState.putInt("ImageEars", imageears.getVisibility());
+        outState.putInt("ImageNose", imagenose.getVisibility());
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+
+        // Sets the visibility of the image (Visible/Invisible) on restoring the instance using the key pair
+        super.onRestoreInstanceState(savedInstanceState);
+        imagemouth.setVisibility(savedInstanceState.getInt("ImageMouth"));
+        imagehat.setVisibility(savedInstanceState.getInt("ImageHat"));
+        imageeyes.setVisibility(savedInstanceState.getInt("ImageEyes"));
+        imagemoustache.setVisibility(savedInstanceState.getInt("ImageMoustache"));
+        imageglasses.setVisibility(savedInstanceState.getInt("ImageGlasses"));
+        imageeyebrows.setVisibility(savedInstanceState.getInt("ImageEyebrows"));
+        imageshoes.setVisibility(savedInstanceState.getInt("ImageShoes"));
+        imagearms.setVisibility(savedInstanceState.getInt("ImageArms"));
+        imageears.setVisibility(savedInstanceState.getInt("ImageEars"));
+        imagenose.setVisibility(savedInstanceState.getInt("ImageNose"));
+    }
+
+    // To check if the checkboxes work
     public void checksClicked (View v) {
         Log.d(TAG, "checkClicked: ");
     }
 
+    // Method to check if the checkbox is checked
     public void checkClicked(View view) {
-        // is de view nu gechecked?
+        // Has the view been checked?
         boolean checked = ((CheckBox) view).isChecked();
 
-        // Welke chceckbox is gelklikt
+        // Which checkbox has been checked?
         switch(view.getId()) {
             case R.id.mouth:
-                ImageView imagemouth = (ImageView) findViewById(R.id.ImageMouth);
                 if (checked) {
                     imagemouth.setVisibility(View.VISIBLE);
                 }
@@ -39,7 +99,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.hat:
-                ImageView imagehat = (ImageView) findViewById(R.id.ImageHat);
                 if (checked) {
                     imagehat.setVisibility(View.VISIBLE);
                 }
@@ -49,7 +108,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.eyes:
-                ImageView imageeyes = (ImageView) findViewById(R.id.ImageEyes);
                 if (checked) {
                     imageeyes.setVisibility(View.VISIBLE);
                 }
@@ -59,7 +117,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.moustache:
-                ImageView imagemoustache = (ImageView) findViewById(R.id.ImageMoustache);
                 if (checked) {
                     imagemoustache.setVisibility(View.VISIBLE);
                 }
@@ -69,7 +126,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.glasses:
-                ImageView imageglasses = (ImageView) findViewById(R.id.ImageGlasses);
                 if (checked) {
                     imageglasses.setVisibility(View.VISIBLE);
                 }
@@ -79,7 +135,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.eyebrows:
-                ImageView imageeyebrows = (ImageView) findViewById(R.id.ImageEyebrows);
                 if (checked) {
                     imageeyebrows.setVisibility(View.VISIBLE);
                 }
@@ -89,7 +144,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.shoes:
-                ImageView imageshoes = (ImageView) findViewById(R.id.ImageShoes);
                 if (checked) {
                     imageshoes.setVisibility(View.VISIBLE);
                 }
@@ -99,7 +153,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.arms:
-                ImageView imagearms = (ImageView) findViewById(R.id.ImageArms);
                 if (checked) {
                     imagearms.setVisibility(View.VISIBLE);
                 }
@@ -109,7 +162,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.ears:
-                ImageView imageears = (ImageView) findViewById(R.id.ImageEars);
                 if (checked) {
                     imageears.setVisibility(View.VISIBLE);
                 }
@@ -119,7 +171,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.nose:
-                ImageView imagenose = (ImageView) findViewById(R.id.ImageNose);
                 if (checked) {
                     imagenose.setVisibility(View.VISIBLE);
                 }
